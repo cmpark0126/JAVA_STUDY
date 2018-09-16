@@ -64,7 +64,7 @@ public class HexString2Decimal {
 		int lengthOfStr = hexStr.length();
 		for(int i = 0; i < lengthOfStr; i++){ // independent function
 			char ch = hexStr.charAt(i);
-    	decimalNum += Math.pow(16, i) * hexCharToDecimal(ch);
+    	decimalNum += Math.pow(16, lengthOfStr - i - 1) * hexCharToDecimal(ch);
     }
 		return decimalNum;
 	}
@@ -74,21 +74,28 @@ public class HexString2Decimal {
 	public static void main(String[] args) {
 		Scanner kb = new Scanner(System.in); // Get a hexadecimal
 		System.out.print("Enter a hexadecimal: ");
-		String hexStr = kb.nextLine();
-		hexStr = hexStr.toUpperCase();
+		String input = kb.nextLine();
+
+		if (input.length() == 0) {
+			System.out.println("Usage : Hex2Dec Hexadecimals");
+			System.exit(1);
+		}
+
+		String hexStr = input.toUpperCase();
 
 		// Check if hexStr is a hexadecimal string or not.
 		// If not, exit with a message.
 		if (!isHexString(hexStr)) {
-			System.out.println("Usage : Expecting a hexdecimal number!");
+			System.out.println("Usage : Expecting a hexdecimal number.");
 			System.exit(1);
 		}
 
 		// Invoke hexStringToDecimal() to display its decimal value.
 		// Sample run: Hex(FF) is 255
 		int decimalNum = hexStringToDecimal(hexStr);
-		System.out.println("decimal number : " + decimalNum);
+		System.out.println("Hex(" + input + ") is " + decimalNum);
 
 		kb.close();
+
 	}
 }
