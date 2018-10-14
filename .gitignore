@@ -1,3 +1,6 @@
 *.class
 quiz.*
 *.DS_Store
+/bin/
+/.metadata/
+/.recommenders/
