@@ -65,7 +65,8 @@ public class Hex2Dec {
 				System.out.println("Usage: Hex2Dec hexadecimal");
 				System.exit(1);
 			}
-			inStrs = inputLine.split("\\s*[ ;:,.]\\s*");
+			// inStrs = inputLine.split("\\s*[ ;:,.]\\s*");
+			inStrs = inputLine.split("[,.\\s]+");
 			// args = inputLine.split("\\s+");
 		} else {
 			inStrs = new String[args.length];
